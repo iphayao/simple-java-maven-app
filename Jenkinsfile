@@ -1,24 +1,17 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2/'
+        }
+    }
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'maven:3-alpine'
-                    args '-v /root/.m2:/root/.m2/'
-                }
-            }
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
-            agent {
-                docker {
-                    image 'maven:3-alpine'
-                    args '-v /root/.m2:/root/.m2/'
-                }
-            }
             steps {
                 sh 'mvn test'
             }
@@ -32,11 +25,11 @@ pipeline {
             steps {
                 sh 'docker build -t my-app .'
             }
-        }
-        stage('Deliver') {
-            steps {
-                sh './deliver.sh'
-            }
-        }
+        // }
+        // stage('Deliver') {
+        //     steps {
+        //         sh './deliver.sh'
+        //     }
+        // }
     }
 }
