@@ -5,6 +5,9 @@ pipeline {
     //         args '-v /root/.m2:/root/.m2/'
     //     }
     // }
+    environment {
+        dockerImage = ''
+    }
     agent any
     stages {
         stage('Build') {
@@ -39,8 +42,8 @@ pipeline {
             steps {
                 withDockerRegistry(credentialsId: 'd9a99034-e268-42bf-97dd-55d64938bcc6', url: 'https://index.docker.io/v1/') {
                     // sh 'docker build -t my-app .'
-                    image = docker.build("my-app:${env.BULID_ID}")
-                    image.push()
+                    dockerImage = docker.build("my-app:${env.BULID_ID}")
+                    dockerImage.push()
                 }
             }
         }
