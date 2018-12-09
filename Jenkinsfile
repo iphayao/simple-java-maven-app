@@ -40,10 +40,12 @@ pipeline {
         stage('Build image') {
             agent any
             steps {
-                withDockerRegistry(credentialsId: 'd9a99034-e268-42bf-97dd-55d64938bcc6', url: 'https://index.docker.io/v1/') {
-                    // sh 'docker build -t my-app .'
-                    dockerImage = docker.build("my-app:${env.BULID_ID}")
-                    dockerImage.push()
+                script {
+                    withDockerRegistry(credentialsId: 'd9a99034-e268-42bf-97dd-55d64938bcc6', url: 'https://index.docker.io/v1/') {
+                        // sh 'docker build -t my-app .'
+                        dockerImage = docker.build("my-app:${env.BULID_ID}")
+                        dockerImage.push()
+                    }
                 }
             }
         }
