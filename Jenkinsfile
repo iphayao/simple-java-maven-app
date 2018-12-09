@@ -21,6 +21,11 @@ pipeline {
                 }
             }
         }
+        stage('Package') {
+            steps {
+                sh 'docker build -t my-image:${env.BUILD_ID} .'
+            }
+        }
         stage('Deliver') {
             steps {
                 sh './deliver.sh'
