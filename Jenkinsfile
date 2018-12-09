@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Package') {
             steps {
-                sh 'docker build -t my-image:${env.BUILD_ID} .'
+                sh 'docker build -t my-app .'
             }
         }
         stage('Deliver') {
