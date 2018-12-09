@@ -25,7 +25,7 @@ pipeline {
             steps {
                 sh 'docker build -t my-app .'
             }
-        // }
+        }
         // stage('Deliver') {
         //     steps {
         //         sh './deliver.sh'
