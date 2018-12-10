@@ -8,7 +8,6 @@ pipeline {
     environment {
         dockerImage = ''
     }
-    agent any
     stages {
         stage('Build') {
             // agent { 
