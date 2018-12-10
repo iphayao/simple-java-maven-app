@@ -39,10 +39,10 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                script {
+                //script {
                     sh 'docker build -t phayao/my-app .'
                     //dockerImage = docker.build("phayao/my-app")
-                }
+                //}
             }
         }
         stage('Push image') {
