@@ -1,0 +1,5 @@
+docker run --rm -u root -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home jenkinsci/jenkins:lts
+
+docker run --rm -u root -p 8080:8080 -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v "$HOME":/home jenkinsci/blueocean
+
+/root/.m2\n/var/jenkins_home/workspace/simple-java-maven-app\n/var/jenkins_home/workspace/simple-java-maven-app@tmp\n
