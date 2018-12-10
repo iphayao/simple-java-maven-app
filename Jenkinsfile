@@ -48,6 +48,7 @@ pipeline {
             steps {
                 withDockerRegistry(credentialsId: 'd9a99034-e268-42bf-97dd-55d64938bcc6', url: 'https://index.docker.io/v1/') {
                     dockerImage.push()
+                }
             }
         }
         // stage('Deliver') {
