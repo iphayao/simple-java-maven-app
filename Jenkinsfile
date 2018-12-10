@@ -53,6 +53,11 @@ pipeline {
                 }
             }
         }
+        stage('Deployment') {
+            steps {
+                sh 'kubectl apply -f deployment.yml';
+            }
+        }
         // stage('Deliver') {
         //     steps {
         //         sh './deliver.sh'
