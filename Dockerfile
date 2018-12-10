@@ -8,7 +8,7 @@ VOLUME /tmp
 EXPOSE 8080
 
 # Set application's JAR file
-ARG JAR_FILE=target/my-app-1.0-SNAPSHOT.jar
+ARG JAR_FILE=${WORKSPACE}target/my-app-1.0-SNAPSHOT.jar
 
 # Add the application's JAR file to the container
 ADD ${JAR_FILE} app.jar

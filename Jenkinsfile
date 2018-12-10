@@ -39,14 +39,9 @@ pipeline {
         }
         stage('Build image') {
             steps {
-                sh 'cd /var/jenkins_home/workspace/simple-java-maven-app'
-                sh 'pwd'
-                sh 'ls'
-                sh "echo ${WORKSPACE}"
-                sh 'docker build -t phayao/my-app .'
-                // script {
-                //     dockerImage = docker.build("phayao/my-app")
-                // }
+                script {
+                    dockerImage = docker.build("phayao/my-app")
+                }
             }
         }
         stage('Push image') {
@@ -63,10 +58,5 @@ pipeline {
                 sh 'kubectl apply -f myapp-deployment.yml';
             }
         }
-        // stage('Deliver') {
-        //     steps {
-        //         sh './deliver.sh'
-        //     }
-        // }
     }
 }
