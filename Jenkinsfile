@@ -40,9 +40,11 @@ pipeline {
         stage('Build image') {
             steps {
                 sh 'cd /var/jenkins_home/workspace/simple-java-maven-app'
-                script {
-                    dockerImage = docker.build("phayao/my-app")
-                }
+                sh 'pwd'
+                sh 'docker build -t phayao/my-app .'
+                // script {
+                //     dockerImage = docker.build("phayao/my-app")
+                // }
             }
         }
         stage('Push image') {
