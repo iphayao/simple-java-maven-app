@@ -40,7 +40,7 @@ pipeline {
         stage('Build image') {
             steps {
                 script {
-                    dockerImage = docker.build("phayao/my-app:${env.BULID_ID}")
+                    dockerImage = docker.build("phayao/my-app:${env.BUILD_ID}")
                 }
             }
         }
